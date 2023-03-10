@@ -1,0 +1,41 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="section">
+        <h1>{{user.name}}</h1>
+    </div>
+    
+
+
+    <div class="section">
+        <h3>My Events</h3>
+        <!-- This gets all the events the user is registered in -->
+        {% for event in user.events.all %} 
+
+            <a href="{% url 'event' event.id %}">
+                <div>
+                    {{event.name}}
+                </div>
+            </a>
+
+        {% endfor %}
+    </div>
+
+
+    <div class="section">
+        <h3>My Submissions</h3>
+        
+        {% for sub in user.submissions.all %} 
+
+            <a href="{% url 'update-submission' sub.id %}">
+                <div>
+                    {{sub.event.name}}
+                </div>
+            </a>
+
+        {% endfor %}
+    </div>
+
+
+{% endblock %}

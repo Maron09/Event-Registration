@@ -1,0 +1,18 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+    <h4>Submit Project for {{event.name}}</h4>
+
+    <div>
+        <form action="" method="POST">
+            {% csrf_token %}
+
+            {{form.as_p}}
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+{% endblock %}
